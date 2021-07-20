@@ -133,6 +133,7 @@ PRODUCT_VENDOR_PROPERTIES += \
     debug.renderengine.backend=skiaglthreaded \
     renderthread.skia.reduceopstasksplitting=true \
     debug.sf.disable_client_composition_cache=1 \
+    debug.sf.layer_caching_active_layer_timeout_ms=1000 \
     ro.vendor.display.sensortype=2 \
     ro.vendor.display.svi=1 \
     vendor.display.svi.config=1 \
