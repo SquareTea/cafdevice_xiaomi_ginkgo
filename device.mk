@@ -25,7 +25,8 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PRODUCT_PROPERTIES += \
     vendor.audio.feature.compr_voip.enable=true \
-    vendor.audio.feature.spkr_prot.enable=false
+    vendor.audio.feature.spkr_prot.enable=false \
+    vendor.audio.offload.buffer.size.kb=256
 
 PRODUCT_VENDOR_PROPERTIES += \
     ro.config.vc_call_vol_default=5 \
