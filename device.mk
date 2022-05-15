@@ -129,6 +129,7 @@ PRODUCT_VENDOR_PROPERTIES += \
     debug.sf.enable_hwc_vds=1 \
     debug.sf.latch_unsignaled=1 \
     ro.config.avoid_gfx_accel=true \
+    debug.sf.disable_client_composition_cache=1 \
     ro.vendor.display.sensortype=2 \
     ro.vendor.display.svi=1 \
     vendor.display.svi.config=1 \
