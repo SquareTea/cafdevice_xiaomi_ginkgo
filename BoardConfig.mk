@@ -1,3 +1,4 @@
+
 #
 # Copyright (C) 2018-2019 The LineageOS Project
 # Copyright (C) 2020-2021 Paranoid Android
@@ -116,6 +117,10 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 # Reloaded Properties
 TARGET_SYSTEM_EXT_PROP += $(DEVICE_PATH)/system_ext.prop
 
+# Security
+BOOT_SECURITY_PATCH  := 2022-02-01
+VENDOR_SECURITY_PATCH := $(BOOT_SECURITY_PATCH)
+
 # Sepolicy
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
 SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/public
@@ -128,9 +133,6 @@ BOARD_AVB_RECOVERY_ALGORITHM := SHA256_RSA2048
 BOARD_AVB_RECOVERY_ROLLBACK_INDEX := 1
 BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 1
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
-
-# Vendor SPL
-VENDOR_SECURITY_PATCH := 2022-07-01
 
 # Inherit from ReloadedOS configuration
 include vendor/reloaded/config/BoardConfigReloaded.mk
