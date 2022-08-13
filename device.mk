@@ -279,6 +279,10 @@ PRODUCT_COPY_FILES += \
 TARGET_BOARD_PLATFORM := trinket
 TRINKET := trinket
 
+# Power
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.2.vendor
+
 # QTI Components
 TARGET_COMMON_QTI_COMPONENTS := all
 
