@@ -161,6 +161,25 @@ on property:vendor.post_boot.parsed=1
     write /sys/block/mmcblk0/queue/nr_requests 64
     write /sys/block/mmcblk0/queue/read_ahead_kb 128
     write /sys/block/mmcblk1/queue/read_ahead_kb 128
+    write /sys/block/dm-0/queue/read_ahead_kb 128
+    write /sys/block/dm-1/queue/read_ahead_kb 128
+    write /sys/block/dm-10/queue/read_ahead_kb 128
+    write /sys/block/dm-11/queue/read_ahead_kb 128
+    write /sys/block/dm-12/queue/read_ahead_kb 128
+    write /sys/block/dm-13/queue/read_ahead_kb 128
+    write /sys/block/dm-14/queue/read_ahead_kb 128
+    write /sys/block/dm-17/queue/read_ahead_kb 128
+    write /sys/block/dm-19/queue/read_ahead_kb 128
+    write /sys/block/dm-2/queue/read_ahead_kb 128
+    write /sys/block/dm-20/queue/read_ahead_kb 128
+    write /sys/block/dm-21/queue/read_ahead_kb 128
+    write /sys/block/dm-23/queue/read_ahead_kb 128
+    write /sys/block/dm-24/queue/read_ahead_kb 128
+    write /sys/block/dm-4/queue/read_ahead_kb 128
+    write /sys/block/dm-5/queue/read_ahead_kb 128
+    write /sys/block/dm-6/queue/read_ahead_kb 128
+    write /sys/block/dm-8/queue/read_ahead_kb 128
+    write /sys/block/dm-9/queue/read_ahead_kb 128
 
     # Back to default VM settings
     write /proc/sys/vm/dirty_expire_centisecs 3000
