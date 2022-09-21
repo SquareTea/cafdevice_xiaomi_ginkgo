@@ -64,4 +64,7 @@
              9 - Dialer -->
     <integer name="config_doubleTapDefault">1</integer>
 
+    <!-- Fingerprint from stock ROM -->
+    <string name="config_stockFingerprint" translatable="false">xiaomi/ginkgo/ginkgo:11/RKQ1.201004.002/V12.5.2.0.RCOMIXM:user/release-keys</string>
+
 </resources>
