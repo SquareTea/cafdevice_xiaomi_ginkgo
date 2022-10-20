@@ -10,10 +10,6 @@ $(call inherit-product, vendor/xiaomi/ginkgo/ginkgo-vendor.mk)
 
 # Audio
 
-PRODUCT_PACKAGES += \
-    android.hardware.audio@2.0-impl \
-    android.hardware.audio@4.0-impl
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
     $(LOCAL_PATH)/configs/audio/audio_io_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_io_policy.conf \
@@ -126,16 +122,11 @@ PRODUCT_PRODUCT_PROPERTIES += \
     persist.sys.sf.color_saturation=1.1
 
 PRODUCT_VENDOR_PROPERTIES += \
-    debug.sf.enable_gl_backpressure=1 \
     debug.sf.disable_backpressure=1 \
     debug.sf.enable_hwc_vds=1 \
     debug.sf.latch_unsignaled=1 \
     ro.config.avoid_gfx_accel=true \
-    debug.hwui.renderer=skiagl \
-    debug.renderengine.backend=skiaglthreaded \
-    renderthread.skia.reduceopstasksplitting=true \
     debug.sf.disable_client_composition_cache=1 \
-    debug.sf.layer_caching_active_layer_timeout_ms=1000 \
     ro.vendor.display.sensortype=2 \
     ro.vendor.display.svi=1 \
     vendor.display.svi.config=1 \
