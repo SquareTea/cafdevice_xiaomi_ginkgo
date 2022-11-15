@@ -105,7 +105,8 @@ PRODUCT_VENDOR_PROPERTIES += \
     vendor.vidhance.video.enabled=1
 
 PRODUCT_SYSTEM_PROPERTIES += \
-    vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera
+    vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera \
+    persist.vendor.camera.privapp.list=org.codeaurora.snapcam,com.android.camera
 
 # Charger
 PRODUCT_SYSTEM_PROPERTIES += \
