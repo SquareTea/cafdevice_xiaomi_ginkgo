@@ -26,7 +26,7 @@ $(call inherit-product, device/xiaomi/ginkgo/device.mk)
 
 # Inherit common ReloadedOS configuration
 $(call inherit-product, vendor/reloaded/config/product.mk)
-
+TARGET_BUILD_VARIANT := user
 # Device identifier
 PRODUCT_NAME := ginkgo
 PRODUCT_DEVICE := ginkgo

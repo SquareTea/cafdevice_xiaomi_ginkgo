@@ -48,7 +48,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
     bluetooth.device.class_of_device=90,2,12
 
 # Camera
-$(call inherit-product, vendor/ginkgo-miuicamera/config.mk)
+$(call inherit-product, vendor/miuicamera/config.mk)
 
 PRODUCT_PACKAGES += \
     android.frameworks.sensorservice@1.0 \
@@ -105,7 +105,8 @@ PRODUCT_VENDOR_PROPERTIES += \
 
 PRODUCT_SYSTEM_PROPERTIES += \
     vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera \
-    persist.vendor.camera.privapp.list=org.codeaurora.snapcam,com.android.camera
+    persist.vendor.camera.privapp.list=org.codeaurora.snapcam,com.android.camera \
+    persist.sys.camera.fallback_id_2=20
 
 # Charger
 PRODUCT_SYSTEM_PROPERTIES += \
@@ -123,18 +124,22 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 PRODUCT_VENDOR_PROPERTIES += \
     debug.sf.disable_backpressure=1 \
-    debug.sf.enable_hwc_vds=1 \
     debug.sf.latch_unsignaled=1 \
     ro.config.avoid_gfx_accel=true \
     debug.sf.disable_client_composition_cache=1 \
     ro.vendor.display.sensortype=2 \
     ro.vendor.display.svi=1 \
     vendor.display.svi.config=1 \
-    vendor.display.svi.config_path=/vendor/etc/SVIConfig.xml
+    vendor.display.svi.config_path=/vendor/etc/SVIConfig.xml \
+    ro.sf.blurs_are_expensive=1 \
+    ro.surface_flinger.supports_background_blur=1
 
 PRODUCT_SYSTEM_PROPERTIES += \
     persist.lcd.cabc_mode=1 \
-    persist.lcd.hbm_mode=0
+    persist.lcd.hbm_mode=0 \
+    ro.sf.blurs_are_expensive=1 \
+    ro.surface_flinger.supports_background_blur=1 \
+    debug.sf.layer_caching_active_layer_timeout_ms=1000
 
 PRODUCT_ODM_PROPERTIES += \
     ro.surface_flinger.use_color_management=1
@@ -350,6 +355,38 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal/thermal-engine-camera.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-camera.conf \
     $(LOCAL_PATH)/configs/thermal/thermal-engine-map.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-map.conf \
     $(LOCAL_PATH)/configs/thermal/thermal-engine-normal.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-normal.conf
+
+PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := everything
+
+# Always preopt extracted APKs to prevent extracting out of the APK for gms
+# modules.
+PRODUCT_ALWAYS_PREOPT_EXTRACTED_APK := true
+
+# Use a profile based boot image for this device. Note that this is currently a
+# generic profile and not Android Go optimized.
+PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE := true
+PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/config/boot-image-profile.txt
+
+# Do not generate libartd.
+PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
+
+# Strip the local variable table and the local variable type table to reduce
+# the size of the system image. This has no bearing on stack traces, but will
+# leave less information available via JDWP.
+PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
+
+PRODUCT_SYSTEM_PROPERTIES += \
+    dalvik.vm.dex2oat64.enabled=true \
+    ro.vendor.qti.am.reschedule_service=true \
+    ro.sys.fw.dex2oat_thread_count=8 \
+    dalvik.vm.boot-dex2oat-threads=8 \
+    dalvik.vm.dex2oat-threads=8 \
+    dalvik.vm.dex2oat-cpu-set=0,1,2,3,4,5,6,7 \
+    dalvik.vm.dex2oat-filter=everything \
+    dalvik.vm.dex2oat-threads=8 \
+    dalvik.vm.image-dex2oat-cpu-set=0,1,2,3,4,5,6,7 \
+    dalvik.vm.image-dex2oat-filter=everything \
+    dalvik.vm.image-dex2oat-threads=8 
 
 # VNDK
 PRODUCT_COPY_FILES += \

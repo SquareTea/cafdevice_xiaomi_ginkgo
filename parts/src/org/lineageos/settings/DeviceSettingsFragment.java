@@ -102,6 +102,7 @@ public class DeviceSettingsFragment extends PreferenceFragment implements
             return true;
         });
 
+
         mVibrator = (Vibrator) getActivity().getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
 
         mVibStrengthPref = (SeekBarPreference) findPreference(PREF_VIBRATION_STRENGTH);

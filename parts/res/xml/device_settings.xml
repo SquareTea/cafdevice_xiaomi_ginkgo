@@ -84,6 +84,7 @@
                 android:targetClass="org.lineageos.settings.display.LcdFeaturesPreferenceActivity"
                 android:targetPackage="org.lineageos.settings.display" />
         </Preference>
+
     </PreferenceCategory>
 
     <PreferenceCategory
